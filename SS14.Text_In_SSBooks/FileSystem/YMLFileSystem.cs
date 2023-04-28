@@ -20,7 +20,7 @@ namespace SS14.Text_In_SSBooks.FileSystem
 
         public async Task<bool> WriteYMLFiles(IDictionary<string, ContentFile?>? content)
         {
-            using (StreamWriter writer = new StreamWriter(pathUML + "CustomBooks" + ".uml", false, Encoding.UTF8))
+            using (StreamWriter writer = new StreamWriter(pathUML + "CustomBooks" + ".yml", false, Encoding.UTF8))
             {
                 foreach (var contenItem in content)
                 {
@@ -35,12 +35,12 @@ namespace SS14.Text_In_SSBooks.FileSystem
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("- type: entity");
-            sb.AppendLine("  parent: BaseItem");
-            sb.AppendLine("  id: "+ filename+"id");
-            sb.AppendLine("  name: "+ name);
+            sb.AppendLine("  parent: BookBase");
+            sb.AppendLine("  id: "+ filename.Replace("-","")+"id");
+            sb.AppendLine("  name: "+'"'+ name+'"');
             sb.AppendLine("  description: " + discription);
             sb.AppendLine("  components: ");
-            sb.AppendLine("      - type: Sprite");
+            sb.AppendLine("    - type: Sprite");
             sb.AppendLine("      sprite: Objects/Misc/books.rsi");
             sb.AppendLine("      layers:");
             sb.AppendLine("        - state: "+idsprite);

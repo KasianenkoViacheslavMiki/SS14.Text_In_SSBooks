@@ -43,7 +43,7 @@ namespace SS14.Text_In_SSBooks.FileSystem
                 foreach (var contenItem in content)
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine(contenItem.Key + " = " + contenItem.Value.Content);
+                    sb.AppendLine(contenItem.Key + " = " + contenItem.Value.Content.Replace("\r\n", "\r\n        "));
                     await writer.WriteLineAsync(sb.ToString());
                 }
             }
